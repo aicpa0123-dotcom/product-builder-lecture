@@ -48,7 +48,7 @@ function handleGenerateClick() {
 generateBtn.addEventListener('click', handleGenerateClick);
 
 // --- Animal Face Test Logic ---
-const URL = "https://teachablemachine.withgoogle.com/models/hS9-S1_I3/"; // Sample Model URL (Dog vs Cat)
+const URL = "https://teachablemachine.withgoogle.com/models/PHq3HhwNM/"; // New Model URL
 let model, labelContainer, maxPredictions;
 
 // Initialize the image model
