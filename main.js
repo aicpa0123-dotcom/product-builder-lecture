@@ -1,3 +1,4 @@
+// Select elements
 const numbersContainer = document.querySelector('.numbers-container');
 const generateBtn = document.getElementById('generate-btn');
 const themeToggle = document.getElementById('theme-toggle');
@@ -46,5 +47,85 @@ function handleGenerateClick() {
 
 generateBtn.addEventListener('click', handleGenerateClick);
 
-// Initial generation
+// --- Animal Face Test Logic ---
+const URL = "https://teachablemachine.withgoogle.com/models/hS9-S1_I3/"; // Sample Model URL (Dog vs Cat)
+let model, labelContainer, maxPredictions;
+
+// Initialize the image model
+async function initModel() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+    labelContainer = document.getElementById("label-container");
+}
+
+// Image Upload and Preview
+const uploadArea = document.getElementById('upload-area');
+const imageInput = document.getElementById('image-input');
+const faceImage = document.getElementById('face-image');
+const uploadLabel = document.querySelector('.upload-label');
+const resultContainer = document.getElementById('result-container');
+const loadingSpinner = document.getElementById('loading-spinner');
+const resultMessage = document.getElementById('result-message');
+
+uploadArea.addEventListener('click', () => imageInput.click());
+
+imageInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            faceImage.src = event.target.result;
+            faceImage.hidden = false;
+            uploadLabel.hidden = true;
+            predict();
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+async function predict() {
+    if (!model) {
+        loadingSpinner.hidden = false;
+        await initModel();
+    }
+    
+    loadingSpinner.hidden = false;
+    resultContainer.hidden = true;
+    
+    const prediction = await model.predict(faceImage);
+    loadingSpinner.hidden = true;
+    resultContainer.hidden = false;
+    
+    // Sort and Display results
+    prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+    
+    const topResult = prediction[0].className;
+    resultMessage.innerHTML = `You look like a <span>${topResult}</span>!`;
+    
+    labelContainer.innerHTML = "";
+    for (let i = 0; i < maxPredictions; i++) {
+        const className = prediction[i].className;
+        const probability = (prediction[i].probability * 100).toFixed(0);
+        
+        const barContainer = document.createElement('div');
+        barContainer.classList.add('bar-container');
+        
+        const barFill = document.createElement('div');
+        barFill.classList.add('bar-fill');
+        barFill.style.width = probability + "%";
+        barFill.style.backgroundColor = className === "Dog" ? "#4CAF50" : "#2196F3";
+        
+        const barText = document.createElement('div');
+        barText.classList.add('bar-text');
+        barText.textContent = `${className}: ${probability}%`;
+        
+        barContainer.appendChild(barFill);
+        barContainer.appendChild(barText);
+        labelContainer.appendChild(barContainer);
+    }
+}
+
+// Initial lotto generation
 handleGenerateClick();

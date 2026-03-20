@@ -166,3 +166,75 @@ h1 {
     padding-top: 20px;
     text-align: left;
 }
+
+.animal-test-section {
+    margin-bottom: 30px;
+}
+
+.upload-container {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 40px 20px;
+    border: 2px dashed var(--input-border);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-container:hover {
+    background-color: rgba(0,0,0,0.05);
+}
+
+#face-image {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.upload-label img {
+    width: 60px;
+    opacity: 0.5;
+}
+
+[data-theme="dark"] .upload-label img {
+    filter: invert(1);
+}
+
+#result-container {
+    margin-top: 20px;
+}
+
+.result-message {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.bar-container {
+    height: 25px;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.bar-fill {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+}
+
+.bar-text {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #000;
+    font-weight: bold;
+}
+
+#loading-spinner {
+    margin: 20px 0;
+    font-style: italic;
+}
