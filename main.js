@@ -48,8 +48,14 @@ function handleGenerateClick() {
 generateBtn.addEventListener('click', handleGenerateClick);
 
 // --- Animal Face Test Logic ---
-const URL = "https://teachablemachine.withgoogle.com/models/PHq3HhwNM/"; // New Model URL
+const URL = "https://teachablemachine.withgoogle.com/models/PHq3HhwNM/"; 
 let model, labelContainer, maxPredictions;
+
+const ANIMAL_COMMENTS = {
+    "Dog": "You have a friendly and energetic 'Dog' face! People feel comfortable and happy around you.",
+    "Cat": "You have a chic and mysterious 'Cat' face! You possess a unique charm that draws people in.",
+    "Default": "What a wonderful and unique face you have!"
+};
 
 // Initialize the image model
 async function initModel() {
@@ -69,9 +75,15 @@ const resultContainer = document.getElementById('result-container');
 const loadingSpinner = document.getElementById('loading-spinner');
 const resultMessage = document.getElementById('result-message');
 
-if (uploadArea) {
-    uploadArea.addEventListener('click', () => imageInput.click());
-}
+// 이미지를 클릭해도 다시 업로드할 수 있도록 설정
+[uploadArea, faceImage].forEach(el => {
+    if (el) {
+        el.addEventListener('click', () => {
+            imageInput.value = ""; // 동일 파일 재업로드 가능하게 초기화
+            imageInput.click();
+        });
+    }
+});
 
 if (imageInput) {
     imageInput.addEventListener('change', (e) => {
@@ -106,7 +118,12 @@ async function predict() {
     prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
     
     const topResult = prediction[0].className;
-    resultMessage.innerHTML = `You look like a <span>${topResult}</span>!`;
+    const comment = ANIMAL_COMMENTS[topResult] || ANIMAL_COMMENTS["Default"];
+    
+    resultMessage.innerHTML = `
+        You look like a <span>${topResult}</span>!
+        <p class="comment-text">${comment}</p>
+    `;
     
     labelContainer.innerHTML = "";
     for (let i = 0; i < maxPredictions; i++) {
@@ -138,12 +155,8 @@ const contentSections = document.querySelectorAll('.content-section');
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
         const targetId = button.getAttribute('data-target');
-        
-        // Remove active class from all buttons and sections
         tabButtons.forEach(btn => btn.classList.remove('active'));
         contentSections.forEach(section => section.classList.remove('active'));
-        
-        // Add active class to clicked button and target section
         button.classList.add('active');
         document.getElementById(targetId).classList.add('active');
     });

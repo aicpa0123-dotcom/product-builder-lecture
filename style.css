@@ -28,14 +28,12 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* 상단부터 시작하여 스크롤 허용 */
-    min-height: 100vh;
     margin: 0;
-    padding: 40px 20px;
+    padding: 20px; /* 여백 추가 */
+    min-height: 100vh;
     box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s;
+    overflow-y: auto; /* 세로 스크롤 명시 */
 }
 
 .container {
@@ -47,7 +45,30 @@ body {
     position: relative;
     transition: background-color 0.3s, box-shadow 0.3s;
     width: 100%;
-    max-width: 500px; /* PC에서 너무 넓지 않게 조정 */
+    max-width: 500px;
+    margin: 20px auto; /* 중앙 정렬 및 상하 여백 */
+}
+
+.comment-text {
+    font-size: 16px;
+    margin-top: 10px;
+    color: var(--text-color);
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+#face-image {
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    cursor: pointer; /* 클릭 가능 표시 */
+    transition: transform 0.2s;
+}
+
+#face-image:hover {
+    transform: scale(1.02);
 }
 
 h1 {
