@@ -54,7 +54,9 @@ let model, labelContainer, maxPredictions;
 const ANIMAL_COMMENTS = {
     "Dog": "You have a friendly and energetic 'Dog' face! People feel comfortable and happy around you.",
     "Cat": "You have a chic and mysterious 'Cat' face! You possess a unique charm that draws people in.",
-    "Default": "What a wonderful and unique face you have!"
+    "강아지": "상냥하고 에너지가 넘치는 '강아지상'이시네요! 주변 사람들을 즐겁게 만드는 매력이 있습니다.",
+    "고양이": "세련되고 신비로운 '고양이상'이시네요! 사람을 끌어당기는 독특한 분위기를 가지고 계십니다.",
+    "Default": "정말 멋지고 개성 넘치는 얼굴을 가지셨네요!"
 };
 
 // Initialize the image model
@@ -118,10 +120,14 @@ async function predict() {
     prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
     
     const topResult = prediction[0].className;
-    const comment = ANIMAL_COMMENTS[topResult] || ANIMAL_COMMENTS["Default"];
+    // 매핑 (Dog/dog/강아지 등 대소문자 및 한글 대응)
+    const commentKey = Object.keys(ANIMAL_COMMENTS).find(key => 
+        key.toLowerCase() === topResult.toLowerCase() || key === topResult
+    );
+    const comment = ANIMAL_COMMENTS[commentKey] || ANIMAL_COMMENTS["Default"];
     
     resultMessage.innerHTML = `
-        You look like a <span>${topResult}</span>!
+        <div class="top-result-text">You look like a <span>${topResult}</span>!</div>
         <p class="comment-text">${comment}</p>
     `;
     
@@ -136,7 +142,9 @@ async function predict() {
         const barFill = document.createElement('div');
         barFill.classList.add('bar-fill');
         barFill.style.width = probability + "%";
-        barFill.style.backgroundColor = className === "Dog" ? "#4CAF50" : "#2196F3";
+        // 색상 지정 (한글/영문 대응)
+        const isDog = className.toLowerCase().includes("dog") || className.includes("강아지");
+        barFill.style.backgroundColor = isDog ? "#4CAF50" : "#2196F3";
         
         const barText = document.createElement('div');
         barText.classList.add('bar-text');
