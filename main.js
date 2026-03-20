@@ -69,21 +69,25 @@ const resultContainer = document.getElementById('result-container');
 const loadingSpinner = document.getElementById('loading-spinner');
 const resultMessage = document.getElementById('result-message');
 
-uploadArea.addEventListener('click', () => imageInput.click());
+if (uploadArea) {
+    uploadArea.addEventListener('click', () => imageInput.click());
+}
 
-imageInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            faceImage.src = event.target.result;
-            faceImage.hidden = false;
-            uploadLabel.hidden = true;
-            predict();
-        };
-        reader.readAsDataURL(file);
-    }
-});
+if (imageInput) {
+    imageInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                faceImage.src = event.target.result;
+                faceImage.hidden = false;
+                uploadLabel.hidden = true;
+                predict();
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
 
 async function predict() {
     if (!model) {
@@ -126,6 +130,24 @@ async function predict() {
         labelContainer.appendChild(barContainer);
     }
 }
+
+// --- Tab Switching Logic ---
+const tabButtons = document.querySelectorAll('.tab-btn');
+const contentSections = document.querySelectorAll('.content-section');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        
+        // Remove active class from all buttons and sections
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        contentSections.forEach(section => section.classList.remove('active'));
+        
+        // Add active class to clicked button and target section
+        button.classList.add('active');
+        document.getElementById(targetId).classList.add('active');
+    });
+});
 
 // Initial lotto generation
 handleGenerateClick();

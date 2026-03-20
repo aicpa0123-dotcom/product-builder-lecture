@@ -238,3 +238,37 @@ h1 {
     margin: 20px 0;
     font-style: italic;
 }
+
+.tab-menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.6;
+    transition: opacity 0.3s, border-bottom 0.3s;
+}
+
+.tab-btn.active {
+    opacity: 1;
+    border-bottom: 3px solid var(--btn-bg);
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
