@@ -11,27 +11,30 @@
 </head>
 <body>
     <div class="container">
-        <button id="theme-toggle">Dark Mode</button>
+        <div class="top-controls">
+            <button id="lang-toggle">한국어</button>
+            <button id="theme-toggle">Dark Mode</button>
+        </div>
         
         <nav class="tab-menu">
-            <button class="tab-btn active" data-target="animal-test-section">Animal Face Test</button>
-            <button class="tab-btn" data-target="lotto-section">Lotto Generator</button>
+            <button class="tab-btn active" data-target="animal-test-section" data-i18n="animalTab">Animal Face Test</button>
+            <button class="tab-btn" data-target="lotto-section" data-i18n="lottoTab">Lotto Generator</button>
         </nav>
 
         <section id="animal-test-section" class="content-section active">
-            <h1>AI Animal Face Test</h1>
-            <p>Am I a Dog or a Cat?</p>
+            <h1 data-i18n="animalTitle">AI Animal Face Test</h1>
+            <p data-i18n="animalSubtitle">Am I a Dog or a Cat?</p>
             
             <div class="upload-container" id="upload-area">
                 <input type="file" id="image-input" accept="image/*" hidden>
                 <div class="upload-label">
                     <img src="https://img.icons8.com/ios/100/000000/upload--v1.png" alt="upload icon" id="upload-icon">
-                    <p id="upload-text">Click or Drag to Upload Face</p>
+                    <p id="upload-text" data-i18n="uploadText">Click or Drag to Upload Face</p>
                 </div>
                 <img id="face-image" src="#" alt="your image" hidden>
             </div>
 
-            <div id="loading-spinner" hidden>Analyzing...</div>
+            <div id="loading-spinner" data-i18n="analyzing" hidden>Analyzing...</div>
             <div id="result-container" hidden>
                 <div class="result-message" id="result-message"></div>
                 <div id="label-container"></div>
@@ -39,29 +42,29 @@
         </section>
 
         <section id="lotto-section" class="content-section">
-            <h1>Lotto Number Generator</h1>
+            <h1 data-i18n="lottoTitle">Lotto Number Generator</h1>
             <div class="numbers-container"></div>
-            <button id="generate-btn">Generate Numbers</button>
+            <button id="generate-btn" data-i18n="generateBtn">Generate Numbers</button>
         </section>
 
         <hr class="divider">
 
         <div class="contact-form-container">
-            <h2>Partnership Inquiry</h2>
+            <h2 data-i18n="contactTitle">Partnership Inquiry</h2>
             <form action="https://formspree.io/f/mnjgrnlo" method="POST">
                 <div class="form-group">
-                    <label for="full-name">Name</label>
-                    <input type="text" name="name" id="full-name" placeholder="Your Name" required>
+                    <label for="full-name" data-i18n="nameLabel">Name</label>
+                    <input type="text" name="name" id="full-name" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email-address">Email</label>
-                    <input type="email" name="_replyto" id="email-address" placeholder="email@domain.com" required>
+                    <label for="email-address" data-i18n="emailLabel">Email</label>
+                    <input type="email" name="_replyto" id="email-address" data-i18n-placeholder="emailPlaceholder" placeholder="email@domain.com" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" placeholder="How can we help?" required></textarea>
+                    <label for="message" data-i18n="messageLabel">Message</label>
+                    <textarea name="message" id="message" data-i18n-placeholder="messagePlaceholder" placeholder="How can we help?" required></textarea>
                 </div>
-                <button type="submit" id="submit-btn">Send Message</button>
+                <button type="submit" id="submit-btn" data-i18n="sendBtn">Send Message</button>
             </form>
         </div>
 
