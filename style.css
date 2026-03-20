@@ -30,20 +30,24 @@ body {
     color: var(--text-color);
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start; /* 상단부터 시작하여 스크롤 허용 */
+    min-height: 100vh;
     margin: 0;
+    padding: 40px 20px;
+    box-sizing: border-box;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     background-color: var(--container-bg);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow);
     text-align: center;
     position: relative;
     transition: background-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+    max-width: 500px; /* PC에서 너무 넓지 않게 조정 */
 }
 
 h1 {
