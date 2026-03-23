@@ -4,9 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="siteTitle">AI Multi App - Fun AI Tools</title>
-    <meta name="description" content="Enjoy fun AI tools including AI Animal Face Test and Lotto Number Generator. Free and easy to use.">
-    <meta name="keywords" content="AI, Animal Face, Lotto Generator, Fun Tools, Teachable Machine">
+    <title data-i18n="siteTitle">AI Multi App - Fun AI Tools & Insights</title>
+    <meta name="description" content="Enjoy fun AI tools including AI Animal Face Test and Lotto Number Generator. Explore high-quality articles about AI and statistics.">
+    <meta name="keywords" content="AI, Animal Face, Lotto Generator, AI Articles, Machine Learning, Fun Tools, Teachable Machine">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AI Multi App",
+      "url": "https://product-builder-lecture-c9y.pages.dev/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://product-builder-lecture-c9y.pages.dev/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
     <meta name="google-adsense-account" content="ca-pub-7484262315106179">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7484262315106179"
      crossorigin="anonymous"></script>
@@ -24,6 +37,7 @@
         <nav class="tab-menu">
             <button class="tab-btn active" data-target="animal-test-section" data-i18n="animalTab">Animal Face Test</button>
             <button class="tab-btn" data-target="lotto-section" data-i18n="lottoTab">Lotto Generator</button>
+            <button class="tab-btn" data-target="insights-section" data-i18n="insightsTab">Insights</button>
             <button class="tab-btn" data-target="about-section" data-i18n="aboutTab">About Us</button>
             <button class="tab-btn" data-target="privacy-section" data-i18n="privacyTab">Privacy Policy</button>
         </nav>
@@ -64,10 +78,25 @@
             </div>
         </section>
 
+        <section id="insights-section" class="content-section">
+            <h1 data-i18n="insightsTab">Insights</h1>
+            <div id="blog-listing" class="blog-listing">
+                <!-- Articles will be injected here via JS -->
+            </div>
+            <div id="article-viewer" class="article-viewer" hidden>
+                <button id="back-to-blog" class="back-btn" data-i18n="backToBlog">Back to All Articles</button>
+                <div id="article-content" class="article-content"></div>
+            </div>
+        </section>
+
         <section id="about-section" class="content-section">
             <h1 data-i18n="aboutTab">About Us</h1>
             <div class="text-content">
                 <p data-i18n="aboutBody">Welcome to AI Multi App! We provide fun and useful web tools powered by modern technology. Our goal is to create simple yet engaging experiences for everyone. From AI-driven image analysis to simple utility tools, we strive for quality and user satisfaction.</p>
+            </div>
+            <div class="text-content">
+                <h3 data-i18n="termsTitle">Terms of Service</h3>
+                <p data-i18n="termsBody">By using our services, you agree to follow our terms. Our tools are provided 'as is' without warranty. Use responsibly and legally.</p>
             </div>
         </section>
 
@@ -115,10 +144,16 @@
         </script>
 
         <footer class="footer">
+            <div class="footer-links">
+                <a href="#" class="footer-link" data-target="about-section" data-i18n="aboutTab">About Us</a>
+                <a href="#" class="footer-link" data-target="privacy-section" data-i18n="privacyTab">Privacy Policy</a>
+                <a href="#" class="footer-link" data-target="insights-section" data-i18n="insightsTab">Insights</a>
+            </div>
             <p>&copy; 2026 AI Multi App. All rights reserved.</p>
             <p data-i18n="footerTagline">Bringing fun to your browser with AI.</p>
         </footer>
     </div>
+    <script src="content.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

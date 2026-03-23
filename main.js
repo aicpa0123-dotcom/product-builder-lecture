@@ -1,9 +1,10 @@
 // --- Localization Data ---
 const translations = {
     en: {
-        siteTitle: "AI Multi App - Fun AI Tools",
+        siteTitle: "AI Multi App - Fun AI Tools & Insights",
         animalTab: "Animal Face Test",
         lottoTab: "Lotto Generator",
+        insightsTab: "Insights",
         aboutTab: "About Us",
         privacyTab: "Privacy Policy",
         animalTitle: "AI Animal Face Test",
@@ -18,11 +19,13 @@ const translations = {
         generateBtn: "Generate Numbers",
         lottoDescTitle: "About Lotto Generator",
         lottoDescBody: "Get your lucky numbers for the next draw! Our random generator provides six unique numbers between 1 and 45. Try your luck today with our fair and transparent algorithm.",
-        aboutBody: "Welcome to AI Multi App! We provide fun and useful web tools powered by modern technology. Our goal is to create simple yet engaging experiences for everyone. From AI-driven image analysis to simple utility tools, we strive for quality and user satisfaction.",
-        privacyInfoTitle: "Information Collection",
-        privacyInfoBody: "We do not store or collect any personal photos or facial data. All analysis is performed within your browser using client-side JavaScript.",
-        privacyAdTitle: "Advertising",
-        privacyAdBody: "We use Google AdSense to serve ads. Google uses cookies to serve ads based on a user's prior visits to your website or other websites.",
+        aboutBody: "Welcome to AI Multi App! We provide fun and useful web tools powered by modern technology. Our goal is to create simple yet engaging experiences for everyone. From AI-driven image analysis to simple utility tools, we strive for quality and user satisfaction. Our platform is built using the latest web standards and prioritizes user privacy and security above all else.",
+        termsTitle: "Terms of Service",
+        termsBody: "By accessing or using AI Multi App, you agree to be bound by these Terms of Service. Our AI tools and utilities are provided for entertainment and informational purposes only. We do not guarantee the accuracy or reliability of any results. Users are responsible for their own use of the tools and must comply with all local and international laws. We reserve the right to modify or terminate our services at any time without prior notice. Our software is provided 'as is' without warranties of any kind, express or implied.",
+        privacyInfoTitle: "Privacy and Data Collection",
+        privacyInfoBody: "Your privacy is our top priority. Unlike many AI platforms, we do not upload your photos to any servers. All facial analysis is performed locally in your browser using TensorFlow.js. We do not collect, store, or share any personal identifiable information or biometric data. Any data generated during your session is transient and exists only within your browser's memory.",
+        privacyAdTitle: "Cookie and Advertising Policy",
+        privacyAdBody: "We use Google AdSense to serve advertisements on our site. Google uses cookies to serve ads based on your previous visits to our website and other websites on the internet. You may opt out of personalized advertising by visiting Google's Ad Settings. We also use basic analytics to improve our service, which may involve the use of non-identifying cookies.",
         footerTagline: "Bringing fun to your browser with AI.",
         contactTitle: "Partnership Inquiry",
         nameLabel: "Name",
@@ -35,6 +38,8 @@ const translations = {
         themeDark: "Dark Mode",
         themeLight: "Light Mode",
         langBtn: "한국어",
+        backToBlog: "Back to All Articles",
+        readMore: "Read More",
         animalDog: "Dog",
         animalCat: "Cat",
         commentDog: "You have a friendly and energetic 'Dog' face! People feel comfortable and happy around you.",
@@ -42,9 +47,10 @@ const translations = {
         commentDefault: "What a wonderful and unique face you have!"
     },
     ko: {
-        siteTitle: "AI 멀티 앱 - 재미있는 AI 도구",
+        siteTitle: "AI 멀티 앱 - 재미있는 AI 도구 & 통찰",
         animalTab: "동물상 테스트",
         lottoTab: "로또 번호 생성기",
+        insightsTab: "통찰(블로그)",
         aboutTab: "소개",
         privacyTab: "개인정보 처리방침",
         animalTitle: "AI 동물상 테스트",
@@ -60,6 +66,8 @@ const translations = {
         lottoDescTitle: "로또 번호 생성기 정보",
         lottoDescBody: "다음 추첨을 위한 행운의 번호를 확인하세요! 무작위 생성기가 1에서 45 사이의 6개 번호를 제공합니다. 공정하고 투명한 알고리즘으로 행운을 시험해보세요.",
         aboutBody: "AI 멀티 앱에 오신 것을 환영합니다! 현대적인 기술을 활용하여 재미있고 유용한 웹 도구를 제공합니다. 우리의 목표는 누구나 쉽고 즐겁게 이용할 수 있는 경험을 만드는 것입니다. AI 분석부터 유틸리티 도구까지, 품질과 사용자 만족을 위해 최선을 다하고 있습니다.",
+        termsTitle: "서비스 약관",
+        termsBody: "당사의 서비스를 이용함으로써 귀하는 당사의 약관에 동의하게 됩니다. 당사의 도구는 보증 없이 '있는 그대로' 제공됩니다. 책임감 있고 합법적으로 사용하십시오.",
         privacyInfoTitle: "정보 수집",
         privacyInfoBody: "우리는 어떠한 개인 사진이나 얼굴 데이터도 저장하거나 수집하지 않습니다. 모든 분석은 클라이언트 측 JavaScript를 통해 브라우저 내에서 수행됩니다.",
         privacyAdTitle: "광고",
@@ -76,6 +84,8 @@ const translations = {
         themeDark: "다크 모드",
         themeLight: "라이트 모드",
         langBtn: "English",
+        backToBlog: "전체 글 목록으로",
+        readMore: "더 읽어보기",
         animalDog: "강아지",
         animalCat: "고양이",
         commentDog: "상냥하고 에너지가 넘치는 '강아지상'이시네요! 주변 사람들을 즐겁게 만드는 매력이 있습니다.",
@@ -93,6 +103,10 @@ const numbersContainer = document.querySelector('.numbers-container');
 const generateBtn = document.getElementById('generate-btn');
 const themeToggle = document.getElementById('theme-toggle');
 const langToggle = document.getElementById('lang-toggle');
+const blogListing = document.getElementById('blog-listing');
+const articleViewer = document.getElementById('article-viewer');
+const articleContent = document.getElementById('article-content');
+const backToBlogBtn = document.getElementById('back-to-blog');
 
 // --- Theme Logic ---
 function updateTheme(theme) {
@@ -127,8 +141,11 @@ function updateLanguage(lang) {
     // Update theme toggle text
     updateTheme(currentTheme);
     
+    // Render blog listing with new language
+    renderBlogListing();
+
     // Re-run prediction if image exists to update comments language
-    if (!faceImage.hidden) {
+    if (typeof faceImage !== 'undefined' && !faceImage.hidden) {
         predict();
     }
 }
@@ -136,6 +153,44 @@ function updateLanguage(lang) {
 langToggle.addEventListener('click', () => {
     updateLanguage(currentLang === 'en' ? 'ko' : 'en');
 });
+
+// --- Blog Logic ---
+function renderBlogListing() {
+    if (!blogListing) return;
+    blogListing.innerHTML = '';
+    articles[currentLang].forEach(article => {
+        const card = document.createElement('div');
+        card.classList.add('blog-card');
+        card.innerHTML = `
+            <h3>${article.title}</h3>
+            <div class="blog-date">${article.date}</div>
+            <p>${article.excerpt}</p>
+            <button class="read-more-btn" onclick="showArticle(${article.id})">${translations[currentLang].readMore}</button>
+        `;
+        blogListing.appendChild(card);
+    });
+}
+
+function showArticle(id) {
+    const article = articles[currentLang].find(a => a.id === id);
+    if (article) {
+        blogListing.hidden = true;
+        articleViewer.hidden = false;
+        articleContent.innerHTML = `
+            <h1>${article.title}</h1>
+            <div class="blog-date">${article.date}</div>
+            <div class="full-content">${article.content}</div>
+        `;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+if (backToBlogBtn) {
+    backToBlogBtn.addEventListener('click', () => {
+        articleViewer.hidden = true;
+        blogListing.hidden = false;
+    });
+}
 
 // --- Lotto Logic ---
 function generateLottoNumbers() {
@@ -264,14 +319,43 @@ async function predict() {
 // --- Tab Switching Logic ---
 const tabButtons = document.querySelectorAll('.tab-btn');
 const contentSections = document.querySelectorAll('.content-section');
+const footerLinks = document.querySelectorAll('.footer-link');
+
+function switchTab(targetId) {
+    tabButtons.forEach(btn => {
+        if (btn.getAttribute('data-target') === targetId) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    contentSections.forEach(section => {
+        if (section.id === targetId) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+    });
+    
+    // Reset blog view if switching to insights
+    if (targetId === 'insights-section') {
+        articleViewer.hidden = true;
+        blogListing.hidden = false;
+    }
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        contentSections.forEach(section => section.classList.remove('active'));
-        button.classList.add('active');
-        document.getElementById(targetId).classList.add('active');
+        switchTab(button.getAttribute('data-target'));
+    });
+});
+
+footerLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchTab(link.getAttribute('data-target'));
     });
 });
 
