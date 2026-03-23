@@ -40,10 +40,24 @@ const translations = {
         langBtn: "한국어",
         backToBlog: "Back to All Articles",
         readMore: "Read More",
+        genderMale: "Male",
+        genderFemale: "Female",
+        retryBtn: "Try Again",
         animalDog: "Dog",
         animalCat: "Cat",
-        commentDog: "You have a friendly and energetic 'Dog' face! People feel comfortable and happy around you.",
-        commentCat: "You have a chic and mysterious 'Cat' face! You possess a unique charm that draws people in.",
+        animalRabbit: "Rabbit",
+        animalDinosaur: "Dinosaur",
+        animalBear: "Bear",
+        commentDogMale: "Friendly and energetic 'Dog' face! You have a warm heart and a bright personality.",
+        commentCatMale: "Chic and mysterious 'Cat' face! You possess a unique charisma and sophisticated charm.",
+        commentRabbitMale: "Cute and gentle 'Rabbit' face! You give off a kind and approachable vibe.",
+        commentDinosaurMale: "Strong and manly 'Dinosaur' face! You have a powerful aura and a clear sense of self.",
+        commentBearMale: "Sturdy and reliable 'Bear' face! You have a generous nature and people feel safe with you.",
+        commentDogFemale: "Lovely and cheerful 'Dog' face! Your positive energy makes everyone around you happy.",
+        commentCatFemale: "Elegant and seductive 'Cat' face! You have a mysterious charm that everyone is drawn to.",
+        commentRabbitFemale: "Soft and pure 'Rabbit' face! Your bright smile and kind nature are your greatest strengths.",
+        commentDinosaurFemale: "Chic and strong 'Dinosaur' face! You have a unique style and an independent spirit.",
+        commentBearFemale: "Warm and cozy 'Bear' face! You provide comfort and stability to those around you.",
         commentDefault: "What a wonderful and unique face you have!"
     },
     ko: {
@@ -90,6 +104,16 @@ const translations = {
         animalCat: "고양이",
         commentDog: "상냥하고 에너지가 넘치는 '강아지상'이시네요! 주변 사람들을 즐겁게 만드는 매력이 있습니다.",
         commentCat: "세련되고 신비로운 '고양이상'이시네요! 사람을 끌어당기는 독특한 분위기를 가지고 계십니다.",
+        commentDogMale: "다정다감하고 에너지가 넘치는 '강아지상'이시네요! 주변 사람들을 즐겁게 만드는 매력이 있습니다.",
+        commentCatMale: "시크하고 신비로운 '고양이상'이시네요! 도도하면서도 세련된 분위기를 풍기며 사람을 끌어당깁니다.",
+        commentRabbitMale: "귀엽고 순수한 '토끼상'이시네요! 다가가기 쉽고 선한 인상으로 주변에 긍정적인 에너지를 줍니다.",
+        commentDinosaurMale: "강인하고 남자다운 '공룡상'이시네요! 뚜렷한 이목구비와 강력한 카리스마로 신뢰를 주는 인상입니다.",
+        commentBearMale: "듬직하고 믿음직스러운 '곰상'이시네요! 포근한 매력과 넓은 마음으로 주변 사람들을 편안하게 해줍니다.",
+        commentDogFemale: "사랑스럽고 발랄한 '강아지상'이시네요! 당신의 긍정적인 에너지는 주변 사람들을 행복하게 만듭니다.",
+        commentCatFemale: "우아하고 매혹적인 '고양이상'이시네요! 신비로운 매력을 지니고 있어 누구나 빠져들게 만듭니다.",
+        commentRabbitFemale: "부드럽고 맑은 '토끼상'이시네요! 환한 미소와 착한 성품이 당신의 가장 큰 장점입니다.",
+        commentDinosaurFemale: "시크하고 강렬한 '공룡상'이시네요! 당신만의 독특한 스타일과 독립적인 정신을 가지고 있습니다.",
+        commentBearFemale: "따뜻하고 포근한 '곰상'이시네요! 주변 사람들에게 위로와 안정감을 주는 존재입니다.",
         commentDefault: "정말 멋지고 개성 넘치는 얼굴을 가지셨네요!"
     }
 };
@@ -107,6 +131,7 @@ const blogListing = document.getElementById('blog-listing');
 const articleViewer = document.getElementById('article-viewer');
 const articleContent = document.getElementById('article-content');
 const backToBlogBtn = document.getElementById('back-to-blog');
+const retryBtn = document.getElementById('retry-btn');
 
 // --- Theme Logic ---
 function updateTheme(theme) {
@@ -278,12 +303,20 @@ async function predict() {
     
     prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
     
-    const topResult = prediction[0].className; // Assuming model outputs "Dog" or "Cat"
+    const topResult = prediction[0].className;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
     
-    // Map model class to localized name and comment
-    let animalKey = topResult.toLowerCase().includes("dog") || topResult.includes("강아지") ? "Dog" : "Cat";
+    // Improved Mapping
+    let animalKey = "Dog";
+    const lowerTop = topResult.toLowerCase();
+    if (lowerTop.includes("cat") || lowerTop.includes("고양이")) animalKey = "Cat";
+    else if (lowerTop.includes("rabbit") || lowerTop.includes("토끼")) animalKey = "Rabbit";
+    else if (lowerTop.includes("dinosaur") || lowerTop.includes("공룡")) animalKey = "Dinosaur";
+    else if (lowerTop.includes("bear") || lowerTop.includes("곰")) animalKey = "Bear";
+    
     const localizedAnimal = translations[currentLang][`animal${animalKey}`];
-    const comment = translations[currentLang][`comment${animalKey}`] || translations[currentLang].commentDefault;
+    const genderKey = gender.charAt(0).toUpperCase() + gender.slice(1);
+    const comment = translations[currentLang][`comment${animalKey}${genderKey}`] || translations[currentLang].commentDefault;
     
     resultMessage.innerHTML = `
         <div class="top-result-text">${translations[currentLang].resultPrefix}<span>${localizedAnimal}</span>${translations[currentLang].resultSuffix}</div>
@@ -295,25 +328,41 @@ async function predict() {
         const className = prediction[i].className;
         const probability = (prediction[i].probability * 100).toFixed(0);
         
-        const barContainer = document.createElement('div');
-        barContainer.classList.add('bar-container');
+        const barItem = document.createElement('div');
+        barItem.classList.add('bar-item');
         
-        const barFill = document.createElement('div');
-        barFill.classList.add('bar-fill');
-        barFill.style.width = probability + "%";
-        const isDog = className.toLowerCase().includes("dog") || className.includes("강아지");
-        barFill.style.backgroundColor = isDog ? "#4CAF50" : "#2196F3";
+        let barAnimalKey = "Dog";
+        const lowerClass = className.toLowerCase();
+        if (lowerClass.includes("cat") || lowerClass.includes("고양이")) barAnimalKey = "Cat";
+        else if (lowerClass.includes("rabbit") || lowerClass.includes("토끼")) barAnimalKey = "Rabbit";
+        else if (lowerClass.includes("dinosaur") || lowerClass.includes("공룡")) barAnimalKey = "Dinosaur";
+        else if (lowerClass.includes("bear") || lowerClass.includes("곰")) barAnimalKey = "Bear";
         
-        const barText = document.createElement('div');
-        barText.classList.add('bar-text');
-        // Localize bar labels
-        const barAnimalKey = className.toLowerCase().includes("dog") || className.includes("강아지") ? "Dog" : "Cat";
-        barText.textContent = `${translations[currentLang][`animal${barAnimalKey}`]}: ${probability}%`;
-        
-        barContainer.appendChild(barFill);
-        barContainer.appendChild(barText);
-        labelContainer.appendChild(barContainer);
+        const barColor = {
+            "Dog": "#FFD700", "Cat": "#FF69B4", "Rabbit": "#32CD32", "Dinosaur": "#FF4500", "Bear": "#8B4513"
+        }[barAnimalKey] || "#4CAF50";
+
+        barItem.innerHTML = `
+            <div class="bar-label-group">
+                <span>${translations[currentLang][`animal${barAnimalKey}`]}</span>
+                <span>${probability}%</span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-fill" style="width: ${probability}%; background-color: ${barColor}"></div>
+            </div>
+        `;
+        labelContainer.appendChild(barItem);
     }
+}
+
+if (retryBtn) {
+    retryBtn.addEventListener('click', () => {
+        resultContainer.hidden = true;
+        faceImage.hidden = true;
+        uploadLabel.hidden = false;
+        imageInput.value = "";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 }
 
 // --- Tab Switching Logic ---

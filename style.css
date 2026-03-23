@@ -239,38 +239,110 @@ h1 {
     filter: invert(1);
 }
 
-#result-container {
-    margin-top: 20px;
+.gender-selection {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
-.result-message {
-    font-size: 20px;
+.gender-btn {
+    flex: 1;
+    max-width: 120px;
+    padding: 10px;
+    border: 2px solid var(--input-border);
+    border-radius: 10px;
+    cursor: pointer;
     font-weight: bold;
-    margin-bottom: 15px;
+    transition: all 0.2s;
+}
+
+.gender-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.gender-btn input {
+    display: none;
+}
+
+.gender-btn input:checked + span {
+    color: var(--btn-bg);
+}
+
+.gender-btn:has(input:checked) {
+    border-color: var(--btn-bg);
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+#result-container {
+    margin-top: 30px;
+}
+
+.result-card {
+    background-color: var(--container-bg);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px var(--shadow);
+    text-align: center;
+}
+
+.top-result-text {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.top-result-text span {
+    color: var(--btn-bg);
+}
+
+.comment-text {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
 .bar-container {
-    height: 25px;
+    height: 12px;
     background-color: #eee;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
     overflow: hidden;
     position: relative;
 }
 
-.bar-fill {
-    height: 100%;
-    transition: width 0.5s ease-in-out;
+[data-theme="dark"] .bar-container {
+    background-color: #444;
 }
 
-.bar-text {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    color: #000;
+.bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.8s cubic-bezier(0.1, 0.7, 0.1, 1);
+}
+
+.bar-label-group {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
     font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.retry-btn {
+    margin-top: 30px;
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    width: 100%;
 }
 
 #loading-spinner {

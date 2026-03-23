@@ -46,6 +46,17 @@
             <h1 data-i18n="animalTitle">AI Animal Face Test</h1>
             <p data-i18n="animalSubtitle">Am I a Dog or a Cat?</p>
             
+            <div class="gender-selection">
+                <label class="gender-btn">
+                    <input type="radio" name="gender" value="male" checked>
+                    <span data-i18n="genderMale">Male</span>
+                </label>
+                <label class="gender-btn">
+                    <input type="radio" name="gender" value="female">
+                    <span data-i18n="genderFemale">Female</span>
+                </label>
+            </div>
+
             <div class="upload-container" id="upload-area">
                 <input type="file" id="image-input" accept="image/*" hidden>
                 <div class="upload-label">
@@ -56,9 +67,13 @@
             </div>
 
             <div id="loading-spinner" data-i18n="analyzing" hidden>Analyzing...</div>
+            
             <div id="result-container" hidden>
-                <div class="result-message" id="result-message"></div>
-                <div id="label-container"></div>
+                <div class="result-card">
+                    <div class="result-message" id="result-message"></div>
+                    <div id="label-container"></div>
+                    <button id="retry-btn" class="retry-btn" data-i18n="retryBtn">Try Again</button>
+                </div>
             </div>
             
             <div class="description-box">
