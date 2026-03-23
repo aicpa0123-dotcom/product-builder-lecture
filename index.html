@@ -40,6 +40,7 @@
             <button class="tab-btn" data-target="insights-section" data-i18n="insightsTab">Insights</button>
             <button class="tab-btn" data-target="about-section" data-i18n="aboutTab">About Us</button>
             <button class="tab-btn" data-target="privacy-section" data-i18n="privacyTab">Privacy Policy</button>
+            <button class="tab-btn" data-target="contact-section" data-i18n="contactTab">Contact</button>
         </nav>
 
         <section id="animal-test-section" class="content-section active">
@@ -125,28 +126,27 @@
             </div>
         </section>
 
-        <hr class="divider">
-
-        <div class="contact-form-container">
-            <h2 data-i18n="contactTitle">Partnership Inquiry</h2>
-            <form action="https://formspree.io/f/mnjgrnlo" method="POST">
-                <div class="form-group">
-                    <label for="full-name" data-i18n="nameLabel">Name</label>
-                    <input type="text" name="name" id="full-name" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email-address" data-i18n="emailLabel">Email</label>
-                    <input type="email" name="_replyto" id="email-address" data-i18n-placeholder="emailPlaceholder" placeholder="email@domain.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="message" data-i18n="messageLabel">Message</label>
-                    <textarea name="message" id="message" data-i18n-placeholder="messagePlaceholder" placeholder="How can we help?" required></textarea>
-                </div>
-                <button type="submit" id="submit-btn" data-i18n="sendBtn">Send Message</button>
-            </form>
-        </div>
-
-        <hr class="divider">
+        <section id="contact-section" class="content-section">
+            <h1 data-i18n="contactTab">Contact</h1>
+            <div class="contact-form-container">
+                <h2 data-i18n="contactTitle">Partnership Inquiry</h2>
+                <form action="https://formspree.io/f/mnjgrnlo" method="POST">
+                    <div class="form-group">
+                        <label for="full-name" data-i18n="nameLabel">Name</label>
+                        <input type="text" name="name" id="full-name" data-i18n-placeholder="namePlaceholder" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-address" data-i18n="emailLabel">Email</label>
+                        <input type="email" name="_replyto" id="email-address" data-i18n-placeholder="emailPlaceholder" placeholder="email@domain.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="messageLabel">Message</label>
+                        <textarea name="message" id="message" data-i18n-placeholder="messagePlaceholder" placeholder="How can we help?" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" data-i18n="sendBtn">Send Message</button>
+                </form>
+            </div>
+        </section>
 
         <div id="disqus_thread"></div>
         <script>
@@ -163,6 +163,7 @@
                 <a href="#" class="footer-link" data-target="about-section" data-i18n="aboutTab">About Us</a>
                 <a href="#" class="footer-link" data-target="privacy-section" data-i18n="privacyTab">Privacy Policy</a>
                 <a href="#" class="footer-link" data-target="insights-section" data-i18n="insightsTab">Insights</a>
+                <a href="#" class="footer-link" data-target="contact-section" data-i18n="contactTab">Contact</a>
             </div>
             <p>&copy; 2026 AI Multi App. All rights reserved.</p>
             <p data-i18n="footerTagline">Bringing fun to your browser with AI.</p>
