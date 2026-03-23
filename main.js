@@ -68,8 +68,8 @@ const translations = {
         aboutTab: "소개",
         privacyTab: "개인정보 처리방침",
         animalTitle: "AI 동물상 테스트",
-        animalSubtitle: "나는 강아지상일까, 고양이상일까?",
-        uploadText: "얼굴 사진을 클릭하거나 드래그해서 업로드하세요",
+        animalSubtitle: "나는 어떤 동물을 닮았을까?",
+        uploadText: "사진을 클릭하거나 드래그해서 업로드하세요",
         analyzing: "분석 중...",
         resultPrefix: "당신은 ",
         resultSuffix: "상입니다!",
@@ -79,13 +79,13 @@ const translations = {
         generateBtn: "번호 생성하기",
         lottoDescTitle: "로또 번호 생성기 정보",
         lottoDescBody: "다음 추첨을 위한 행운의 번호를 확인하세요! 무작위 생성기가 1에서 45 사이의 6개 번호를 제공합니다. 공정하고 투명한 알고리즘으로 행운을 시험해보세요.",
-        aboutBody: "AI 멀티 앱에 오신 것을 환영합니다! 현대적인 기술을 활용하여 재미있고 유용한 웹 도구를 제공합니다. 우리의 목표는 누구나 쉽고 즐겁게 이용할 수 있는 경험을 만드는 것입니다. AI 분석부터 유틸리티 도구까지, 품질과 사용자 만족을 위해 최선을 다하고 있습니다.",
+        aboutBody: "AI 멀티 앱에 오신 것을 환영합니다! 현대적인 기술을 활용하여 재미있고 유용한 웹 도구를 제공합니다. 우리의 목표는 누구나 쉽고 즐겁게 이용할 수 있는 경험을 만드는 것입니다. AI 분석부터 유틸리티 도구까지, 품질과 사용자 만족을 위해 최선을 다하고 있습니다. 우리 플랫폼은 최신 웹 표준을 사용하여 구축되었으며 무엇보다 사용자 개인 정보 보호 및 보안을 최우선으로 생각합니다.",
         termsTitle: "서비스 약관",
-        termsBody: "당사의 서비스를 이용함으로써 귀하는 당사의 약관에 동의하게 됩니다. 당사의 도구는 보증 없이 '있는 그대로' 제공됩니다. 책임감 있고 합법적으로 사용하십시오.",
-        privacyInfoTitle: "정보 수집",
-        privacyInfoBody: "우리는 어떠한 개인 사진이나 얼굴 데이터도 저장하거나 수집하지 않습니다. 모든 분석은 클라이언트 측 JavaScript를 통해 브라우저 내에서 수행됩니다.",
-        privacyAdTitle: "광고",
-        privacyAdBody: "우리는 광고 게재를 위해 Google AdSense를 사용합니다. 구글은 쿠키를 사용하여 사용자의 이전 방문 기록을 바탕으로 광고를 게재합니다.",
+        termsBody: "AI 멀티 앱에 접속하거나 사용함으로써 귀하는 본 서비스 약관의 구속을 받는 데 동의하게 됩니다. 당사의 AI 도구 및 유틸리티는 오락 및 정보 제공 목적으로만 제공됩니다. 당사는 결과의 정확성이나 신뢰성을 보장하지 않습니다. 사용자는 도구 사용에 대한 책임을 지며 모든 현지 및 국제법을 준수해야 합니다. 당사는 사전 통지 없이 언제든지 서비스를 수정하거나 중단할 권리가 있습니다. 당사의 소프트웨어는 명시적 또는 묵시적인 어떠한 종류의 보증 없이 '있는 그대로' 제공됩니다.",
+        privacyInfoTitle: "개인정보 보호 및 데이터 수집",
+        privacyInfoBody: "귀하의 개인정보 보호는 당사의 최우선 과제입니다. 많은 AI 플랫폼과 달리 당사는 귀하의 사진을 서버에 업로드하지 않습니다. 모든 얼굴 분석은 TensorFlow.js를 사용하여 브라우저에서 로컬로 수행됩니다. 당사는 개인 식별 정보나 생체 인식 데이터를 수집, 저장 또는 공유하지 않습니다. 세션 중에 생성된 모든 데이터는 일시적이며 브라우저의 메모리 내에만 존재합니다.",
+        privacyAdTitle: "쿠키 및 광고 정책",
+        privacyAdBody: "당사는 사이트에 광고를 게재하기 위해 Google AdSense를 사용합니다. 구글은 귀하가 당사 웹사이트 및 인터넷의 다른 웹사이트를 이전에 방문한 기록을 바탕으로 광고를 게재하기 위해 쿠키를 사용합니다. 구글의 광고 설정 페이지를 방문하여 맞춤형 광고를 거부할 수 있습니다. 또한 서비스 개선을 위해 기본 분석을 사용하며, 이 과정에서 비식별 쿠키가 사용될 수 있습니다.",
         footerTagline: "AI와 함께 브라우저에서 즐거운 경험을 선사합니다.",
         contactTitle: "제휴 문의",
         nameLabel: "이름",
@@ -100,10 +100,14 @@ const translations = {
         langBtn: "English",
         backToBlog: "전체 글 목록으로",
         readMore: "더 읽어보기",
+        genderMale: "남성",
+        genderFemale: "여성",
+        retryBtn: "다시 시도하기",
         animalDog: "강아지",
         animalCat: "고양이",
-        commentDog: "상냥하고 에너지가 넘치는 '강아지상'이시네요! 주변 사람들을 즐겁게 만드는 매력이 있습니다.",
-        commentCat: "세련되고 신비로운 '고양이상'이시네요! 사람을 끌어당기는 독특한 분위기를 가지고 계십니다.",
+        animalRabbit: "토끼",
+        animalDinosaur: "공룡",
+        animalBear: "곰",
         commentDogMale: "다정다감하고 에너지가 넘치는 '강아지상'이시네요! 주변 사람들을 즐겁게 만드는 매력이 있습니다.",
         commentCatMale: "시크하고 신비로운 '고양이상'이시네요! 도도하면서도 세련된 분위기를 풍기며 사람을 끌어당깁니다.",
         commentRabbitMale: "귀엽고 순수한 '토끼상'이시네요! 다가가기 쉽고 선한 인상으로 주변에 긍정적인 에너지를 줍니다.",
@@ -154,13 +158,17 @@ function updateLanguage(lang) {
     // Update all elements with data-i18n
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        el.textContent = translations[lang][key];
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
     });
 
     // Update all placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
-        el.placeholder = translations[lang][key];
+        if (translations[lang][key]) {
+            el.placeholder = translations[lang][key];
+        }
     });
 
     // Update theme toggle text
@@ -183,6 +191,7 @@ langToggle.addEventListener('click', () => {
 function renderBlogListing() {
     if (!blogListing) return;
     blogListing.innerHTML = '';
+    if (!articles || !articles[currentLang]) return;
     articles[currentLang].forEach(article => {
         const card = document.createElement('div');
         card.classList.add('blog-card');
@@ -288,6 +297,16 @@ if (imageInput) {
     });
 }
 
+function getAnimalKey(className) {
+    const lower = className.toLowerCase();
+    if (lower.includes("dog") || lower.includes("강아지")) return "Dog";
+    if (lower.includes("cat") || lower.includes("고양이")) return "Cat";
+    if (lower.includes("rabbit") || lower.includes("토끼")) return "Rabbit";
+    if (lower.includes("dinosaur") || lower.includes("공룡")) return "Dinosaur";
+    if (lower.includes("bear") || lower.includes("곰")) return "Bear";
+    return "Dog"; // Default
+}
+
 async function predict() {
     if (!model) {
         loadingSpinner.hidden = false;
@@ -306,14 +325,7 @@ async function predict() {
     const topResult = prediction[0].className;
     const gender = document.querySelector('input[name="gender"]:checked').value;
     
-    // Improved Mapping
-    let animalKey = "Dog";
-    const lowerTop = topResult.toLowerCase();
-    if (lowerTop.includes("cat") || lowerTop.includes("고양이")) animalKey = "Cat";
-    else if (lowerTop.includes("rabbit") || lowerTop.includes("토끼")) animalKey = "Rabbit";
-    else if (lowerTop.includes("dinosaur") || lowerTop.includes("공룡")) animalKey = "Dinosaur";
-    else if (lowerTop.includes("bear") || lowerTop.includes("곰")) animalKey = "Bear";
-    
+    const animalKey = getAnimalKey(topResult);
     const localizedAnimal = translations[currentLang][`animal${animalKey}`];
     const genderKey = gender.charAt(0).toUpperCase() + gender.slice(1);
     const comment = translations[currentLang][`comment${animalKey}${genderKey}`] || translations[currentLang].commentDefault;
@@ -331,13 +343,7 @@ async function predict() {
         const barItem = document.createElement('div');
         barItem.classList.add('bar-item');
         
-        let barAnimalKey = "Dog";
-        const lowerClass = className.toLowerCase();
-        if (lowerClass.includes("cat") || lowerClass.includes("고양이")) barAnimalKey = "Cat";
-        else if (lowerClass.includes("rabbit") || lowerClass.includes("토끼")) barAnimalKey = "Rabbit";
-        else if (lowerClass.includes("dinosaur") || lowerClass.includes("공룡")) barAnimalKey = "Dinosaur";
-        else if (lowerClass.includes("bear") || lowerClass.includes("곰")) barAnimalKey = "Bear";
-        
+        const barAnimalKey = getAnimalKey(className);
         const barColor = {
             "Dog": "#FFD700", "Cat": "#FF69B4", "Rabbit": "#32CD32", "Dinosaur": "#FF4500", "Bear": "#8B4513"
         }[barAnimalKey] || "#4CAF50";
