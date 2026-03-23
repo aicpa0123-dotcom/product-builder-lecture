@@ -138,6 +138,7 @@ const articleViewer = document.getElementById('article-viewer');
 const articleContent = document.getElementById('article-content');
 const backToBlogBtn = document.getElementById('back-to-blog');
 const retryBtn = document.getElementById('retry-btn');
+const disqusThread = document.getElementById('disqus_thread');
 
 // --- Theme Logic ---
 function updateTheme(theme) {
@@ -197,35 +198,38 @@ function renderBlogListing() {
     articles[currentLang].forEach(article => {
         const card = document.createElement('div');
         card.classList.add('blog-card');
+        card.id = `article-${article.id}`;
         card.innerHTML = `
-            <h3>${article.title}</h3>
-            <div class="blog-date">${article.date}</div>
-            <p>${article.excerpt}</p>
-            <button class="read-more-btn" onclick="showArticle(${article.id})">${translations[currentLang].readMore}</button>
+            <div class="blog-card-header">
+                <h3>${article.title}</h3>
+                <div class="blog-date">${article.date}</div>
+                <p class="excerpt">${article.excerpt}</p>
+                <button class="read-more-btn" onclick="toggleArticle(${article.id})">${translations[currentLang].readMore}</button>
+            </div>
+            <div class="article-inline-content" id="content-${article.id}" hidden>
+                <div class="full-content-inner">${article.content}</div>
+            </div>
         `;
         blogListing.appendChild(card);
     });
 }
 
-function showArticle(id) {
-    const article = articles[currentLang].find(a => a.id === id);
-    if (article) {
-        blogListing.hidden = true;
-        articleViewer.hidden = false;
-        articleContent.innerHTML = `
-            <h1>${article.title}</h1>
-            <div class="blog-date">${article.date}</div>
-            <div class="full-content">${article.content}</div>
-        `;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+function toggleArticle(id) {
+    const contentDiv = document.getElementById(`content-${id}`);
+    const btn = document.querySelector(`#article-${id} .read-more-btn`);
+    const isHidden = contentDiv.hidden;
+    
+    // Close other open articles (optional, for accordion feel)
+    document.querySelectorAll('.article-inline-content').forEach(el => el.hidden = true);
+    document.querySelectorAll('.read-more-btn').forEach(b => b.textContent = translations[currentLang].readMore);
+    
+    contentDiv.hidden = !isHidden;
+    
+    if (isHidden) {
+        btn.textContent = currentLang === 'ko' ? '닫기' : 'Close';
+        // Scroll to the article
+        document.getElementById(`article-${id}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-}
-
-if (backToBlogBtn) {
-    backToBlogBtn.addEventListener('click', () => {
-        articleViewer.hidden = true;
-        blogListing.hidden = false;
-    });
 }
 
 // --- Lotto Logic ---
@@ -394,10 +398,11 @@ function switchTab(targetId) {
         }
     });
     
-    // Reset blog view if switching to insights
-    if (targetId === 'insights-section') {
-        articleViewer.hidden = true;
-        blogListing.hidden = false;
+    // Toggle Disqus visibility: only for Animal Face Test and Lotto Generator
+    if (targetId === 'animal-test-section' || targetId === 'lotto-section') {
+        disqusThread.style.display = 'block';
+    } else {
+        disqusThread.style.display = 'none';
     }
     
     window.scrollTo({ top: 0, behavior: 'smooth' });

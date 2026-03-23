@@ -462,9 +462,9 @@ h1 {
 .blog-card {
     background-color: rgba(0, 0, 0, 0.02);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 15px;
     border-left: 4px solid var(--btn-bg);
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 [data-theme="dark"] .blog-card {
@@ -472,7 +472,7 @@ h1 {
 }
 
 .blog-card:hover {
-    transform: translateX(5px);
+    box-shadow: 0 5px 15px var(--shadow);
 }
 
 .blog-card h3 {
@@ -496,36 +496,31 @@ h1 {
     font-size: 14px;
 }
 
-.article-viewer {
-    text-align: left;
+.article-inline-content {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--input-border);
+    animation: slideDown 0.3s ease-out;
 }
 
-.back-btn {
-    background: none;
-    border: 1px solid var(--text-color);
-    color: var(--text-color);
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 30px;
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.article-content {
+.full-content-inner {
     line-height: 1.8;
+    font-size: 15px;
 }
 
-.article-content h1 {
-    margin-bottom: 10px;
-}
-
-.article-content .full-content {
-    font-size: 16px;
+.full-content-inner h2, .full-content-inner h3 {
     margin-top: 30px;
+    margin-bottom: 15px;
 }
 
-.article-content h2, .article-content h3 {
+.comments-section {
     margin-top: 40px;
-    margin-bottom: 15px;
+    padding-top: 20px;
 }
 
 .content-section {
