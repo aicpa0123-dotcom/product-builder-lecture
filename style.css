@@ -281,19 +281,20 @@ h1 {
 .tab-menu {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     margin-bottom: 30px;
     border-bottom: 1px solid var(--input-border);
     padding-bottom: 10px;
+    flex-wrap: wrap; /* 모바일 대응 */
 }
 
 .tab-btn {
     background: none;
     border: none;
     color: var(--text-color);
-    padding: 10px 20px;
+    padding: 10px 15px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     opacity: 0.6;
     transition: opacity 0.3s, border-bottom 0.3s;
@@ -302,6 +303,59 @@ h1 {
 .tab-btn.active {
     opacity: 1;
     border-bottom: 3px solid var(--btn-bg);
+}
+
+.description-box {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 10px;
+    text-align: left;
+}
+
+[data-theme="dark"] .description-box {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.description-box h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: var(--text-color);
+}
+
+.description-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    opacity: 0.8;
+}
+
+.text-content {
+    text-align: left;
+    padding: 20px 0;
+}
+
+.text-content h3 {
+    font-size: 18px;
+    margin-top: 25px;
+}
+
+.text-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+.footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    border-top: 1px solid var(--input-border);
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.footer p {
+    margin: 5px 0;
 }
 
 .content-section {

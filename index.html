@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Multi App</title>
+    <title data-i18n="siteTitle">AI Multi App - Fun AI Tools</title>
+    <meta name="description" content="Enjoy fun AI tools including AI Animal Face Test and Lotto Number Generator. Free and easy to use.">
+    <meta name="keywords" content="AI, Animal Face, Lotto Generator, Fun Tools, Teachable Machine">
     <meta name="google-adsense-account" content="ca-pub-7484262315106179">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7484262315106179"
      crossorigin="anonymous"></script>
@@ -22,6 +24,8 @@
         <nav class="tab-menu">
             <button class="tab-btn active" data-target="animal-test-section" data-i18n="animalTab">Animal Face Test</button>
             <button class="tab-btn" data-target="lotto-section" data-i18n="lottoTab">Lotto Generator</button>
+            <button class="tab-btn" data-target="about-section" data-i18n="aboutTab">About Us</button>
+            <button class="tab-btn" data-target="privacy-section" data-i18n="privacyTab">Privacy Policy</button>
         </nav>
 
         <section id="animal-test-section" class="content-section active">
@@ -42,12 +46,39 @@
                 <div class="result-message" id="result-message"></div>
                 <div id="label-container"></div>
             </div>
+            
+            <div class="description-box">
+                <h3 data-i18n="animalDescTitle">About AI Animal Face Test</h3>
+                <p data-i18n="animalDescBody">This tool uses Google's Teachable Machine technology to analyze your facial features and determine which animal face you resemble most. Your photos are processed locally in your browser and are never uploaded to our servers.</p>
+            </div>
         </section>
 
         <section id="lotto-section" class="content-section">
             <h1 data-i18n="lottoTitle">Lotto Number Generator</h1>
             <div class="numbers-container"></div>
             <button id="generate-btn" data-i18n="generateBtn">Generate Numbers</button>
+            
+            <div class="description-box">
+                <h3 data-i18n="lottoDescTitle">About Lotto Generator</h3>
+                <p data-i18n="lottoDescBody">Get your lucky numbers for the next draw! Our random generator provides six unique numbers between 1 and 45. Try your luck today with our fair and transparent algorithm.</p>
+            </div>
+        </section>
+
+        <section id="about-section" class="content-section">
+            <h1 data-i18n="aboutTab">About Us</h1>
+            <div class="text-content">
+                <p data-i18n="aboutBody">Welcome to AI Multi App! We provide fun and useful web tools powered by modern technology. Our goal is to create simple yet engaging experiences for everyone. From AI-driven image analysis to simple utility tools, we strive for quality and user satisfaction.</p>
+            </div>
+        </section>
+
+        <section id="privacy-section" class="content-section">
+            <h1 data-i18n="privacyTab">Privacy Policy</h1>
+            <div class="text-content">
+                <h3 data-i18n="privacyInfoTitle">Information Collection</h3>
+                <p data-i18n="privacyInfoBody">We do not store or collect any personal photos or facial data. All analysis is performed within your browser using client-side JavaScript.</p>
+                <h3 data-i18n="privacyAdTitle">Advertising</h3>
+                <p data-i18n="privacyAdBody">We use Google AdSense to serve ads. Google uses cookies to serve ads based on a user's prior visits to your website or other websites.</p>
+            </div>
         </section>
 
         <hr class="divider">
@@ -82,6 +113,11 @@
             (d.head || d.body).appendChild(s);
             })();
         </script>
+
+        <footer class="footer">
+            <p>&copy; 2026 AI Multi App. All rights reserved.</p>
+            <p data-i18n="footerTagline">Bringing fun to your browser with AI.</p>
+        </footer>
     </div>
     <script src="main.js"></script>
 </body>
