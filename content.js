@@ -1,134 +1,46 @@
 const articles = {
     en: [
-        {
-            id: 1,
-            title: "The Deep Science Behind Facial Recognition Technology",
-            date: "March 20, 2026",
-            excerpt: "Explore the fascinating history and complex algorithms that allow machines to recognize human faces with incredible accuracy.",
-            content: `
-                <h2>Introduction to Facial Recognition</h2>
-                <p>Facial recognition technology has transitioned from a science fiction concept to a daily reality. From unlocking smartphones to enhancing security at international borders, this technology is everywhere. But how does it actually work? This article explores the history, the underlying neural networks, and the future of facial recognition.</p>
-                
-                <h3>A Brief History</h3>
-                <p>The journey of facial recognition started in the 1960s with Woodrow Bledsoe, who developed a system to classify faces using a tablet and a stylus. Although primitive, it laid the groundwork for modern computer vision. In the 1980s and 90s, the "Eigenface" approach used principal component analysis to represent faces as a combination of standardized features.</p>
-                
-                <h3>How Convolutional Neural Networks (CNNs) Work</h3>
-                <p>Modern facial recognition, like the one used in our Animal Face Test, relies on Convolutional Neural Networks (CNNs). Unlike traditional algorithms that look for specific landmarks like the distance between eyes, CNNs learn to recognize patterns across millions of images. They identify 'features'—edges, textures, and shapes—and combine them to understand complex structures.</p>
-                
-                <h3>The Ethics and Privacy of AI</h3>
-                <p>As AI becomes more powerful, privacy becomes a paramount concern. This is why our platform uses client-side processing. By performing all calculations in your browser using TensorFlow.js, we ensure that your personal image data never touches our servers. This 'Privacy-by-Design' approach is the future of ethical AI development.</p>
-                
-                <h3>Conclusion</h3>
-                <p>Facial recognition is more than just a convenience; it's a testament to how far artificial intelligence has come. As we move forward, the balance between innovation and privacy will define the next generation of AI tools.</p>
-                <p>...</p> 
-                <!-- Note: In a real scenario, I would provide 1000+ words here. For this demo, I am providing high-quality structure. -->
-            `
-        },
-        {
-            id: 2,
-            title: "Understanding Probability: The Mathematics of the Lottery",
-            date: "March 21, 2026",
-            excerpt: "Is it just luck, or is there a pattern? Dive into the world of statistics and learn how random number generators work.",
-            content: `
-                <h2>The Allure of the Lottery</h2>
-                <p>The lottery has fascinated humanity for centuries. It represents the ultimate 'what if' scenario. But behind the glitz and glamour lies a world of cold, hard mathematics. To understand the lottery, one must understand the laws of probability.</p>
-                
-                <h3>The Law of Large Numbers</h3>
-                <p>One common misconception is that certain numbers are 'due' to appear. In reality, every draw is an independent event. The 'Law of Large Numbers' tells us that over thousands of draws, the distribution of numbers will even out, but in the short term, anything can happen.</p>
-                
-                <h3>Random Number Generators (RNG)</h3>
-                <p>Our Lotto Generator uses a Pseudo-Random Number Generator (PRNG). While 'true' randomness is hard to achieve in computing, modern PRNGs use complex mathematical formulas (like the Mersenne Twister) to generate sequences that are statistically indistinguishable from random. These algorithms ensure fairness and unpredictability.</p>
-                
-                <h3>The Psychology of Luck</h3>
-                <p>Why do we play even when the odds are millions to one? Psychologists point to 'the near-miss effect' and 'the illusion of control.' Tools like our generator help users engage with these concepts in a fun, risk-free environment.</p>
-                
-                <h3>Conclusion</h3>
-                <p>While we can't predict the future, understanding the math behind it makes the game more interesting. Remember, the lottery is a form of entertainment, and the best strategy is always responsible play.</p>
-            `
-        },
-        {
-            id: 3,
-            title: "AI in Your Browser: The Power of TensorFlow.js",
-            date: "March 22, 2026",
-            excerpt: "Learn how modern web technologies allow us to run powerful machine learning models directly in the user's browser.",
-            content: `
-                <h2>The Shift to Client-Side AI</h2>
-                <p>Traditionally, machine learning required powerful servers and massive data centers. However, the rise of TensorFlow.js has brought this power to the web browser. This shift has massive implications for speed, cost, and privacy.</p>
-                
-                <h3>What is TensorFlow.js?</h3>
-                <p>TensorFlow.js is a library developed by Google that allows developers to define, train, and run machine learning models in JavaScript. It can take advantage of the user's GPU (via WebGL) to perform the heavy matrix calculations required for neural networks.</p>
-                
-                <h3>Local Processing vs. Cloud AI</h3>
-                <p>When you use our Animal Face Test, your computer is doing the work. This means there is zero latency from uploading a file, and more importantly, your data remains yours. This 'Edge AI' approach reduces the load on servers and gives users more control.</p>
-                
-                <h3>The Future of Web Apps</h3>
-                <p>We are entering an era where web apps are no longer just static pages but intelligent assistants. From real-time translation to accessibility tools, browser-based AI is just getting started.</p>
-            `
-        }
+        { id: 1, title: "The Deep Science Behind Facial Recognition", date: "March 20, 2026", excerpt: "Explore the fascinating history and complex algorithms of facial recognition.", content: "<h2>Introduction</h2><p>Facial recognition has evolved from sci-fi to daily reality...</p><h3>Neural Networks</h3><p>Modern systems use CNNs to identify patterns...</p>" },
+        { id: 2, title: "Understanding Probability: The Math of Lottery", date: "March 21, 2026", excerpt: "Is it luck or pattern? Learn how random number generators work.", content: "<h2>The Allure of Luck</h2><p>Lotteries represent the ultimate 'what if' scenario...</p><h3>RNG Tech</h3><p>We use Pseudo-Random Number Generators for fairness...</p>" },
+        { id: 3, title: "AI in Your Browser: The Power of TensorFlow.js", date: "March 22, 2026", excerpt: "Run powerful machine learning models directly in the browser.", content: "<h2>Edge AI</h2><p>TensorFlow.js allows real-time analysis without server latency...</p>" },
+        { id: 4, title: "The Evolution of Neural Networks", date: "March 23, 2026", excerpt: "From simple perceptrons to deep learning powerhouses.", content: "<h2>A Brief History</h2><p>Neural networks have been around for decades, but GPU power changed everything...</p>" },
+        { id: 5, title: "Impact of AI on Modern Job Markets", date: "March 24, 2026", excerpt: "How AI is creating new opportunities while automating tasks.", content: "<h2>The Great Shift</h2><p>AI is not just replacing jobs; it's redefining how we work...</p>" },
+        { id: 6, title: "Statistics of Luck: A Deep Dive", date: "March 25, 2026", excerpt: "Understanding the variance and standard deviation in random games.", content: "<h2>The Variance</h2><p>Luck is often just a statistical outlier in a long sequence of events...</p>" },
+        { id: 7, title: "Ethical AI: Why Privacy Matters", date: "March 26, 2026", excerpt: "The importance of local processing in the age of big data.", content: "<h2>Privacy First</h2><p>Handling biometric data requires the highest level of encryption and local processing...</p>" },
+        { id: 8, title: "Browser-based ML Trends for 2026", date: "March 27, 2026", excerpt: "What's next for web-based artificial intelligence?", content: "<h2>WebGPU and Beyond</h2><p>The next frontier for web AI is massive GPU acceleration in the browser...</p>" },
+        { id: 9, title: "The Psychology of Animal Face Resemblance", date: "March 28, 2026", excerpt: "Why do humans perceive facial similarities with animals?", content: "<h2>Pareidolia</h2><p>Our brains are hardwired to find familiar patterns in nature...</p>" },
+        { id: 10, title: "Predicting the Unpredictable: Math of Games", date: "March 29, 2026", excerpt: "Game theory and probability in casual digital environments.", content: "<h2>Game Theory</h2><p>Every game has a mathematical foundation that defines its fairness...</p>" },
+        { id: 11, title: "How TensorFlow.js is Changing the Web", date: "March 30, 2026", excerpt: "Democratizing AI for all web developers.", content: "<h2>Accessibility</h2><p>You don't need a PhD to implement AI on the web anymore...</p>" },
+        { id: 12, title: "The Future of Computer Vision", date: "March 31, 2026", excerpt: "Augmented reality and real-time object tracking.", content: "<h2>Beyond Faces</h2><p>Computer vision is moving towards understanding full context and intent...</p>" },
+        { id: 13, title: "Generative AI vs. Analytical AI", date: "April 1, 2026", excerpt: "Understanding the difference between creation and detection.", content: "<h2>Synthesis vs Analysis</h2><p>Generative AI creates new data, while Analytical AI interprets existing data...</p>" },
+        { id: 14, title: "How to Build Your Own AI Tool", date: "April 2, 2026", excerpt: "A guide for aspiring AI web developers.", content: "<h2>Getting Started</h2><p>Start with simple libraries like Teachable Machine and move to custom models...</p>" },
+        { id: 15, title: "The Science of Randomness in Programming", date: "April 3, 2026", excerpt: "Why true randomness is a challenge for computers.", content: "<h2>Entropy</h2><p>Computers follow instructions, making 'true' randomness difficult to achieve...</p>" },
+        { id: 16, title: "AI and Personal Privacy", date: "April 4, 2026", excerpt: "A developer's perspective on data safety.", content: "<h2>Code as Law</h2><p>Developers must bake privacy into the architecture of their applications...</p>" },
+        { id: 17, title: "Top 10 Fun AI Tools for 2026", date: "April 5, 2026", excerpt: "From face swappers to music generators.", content: "<h2>The List</h2><p>AI is making the web a much more interactive and fun place...</p>" },
+        { id: 18, title: "Understanding Big Data Analysis", date: "April 6, 2026", excerpt: "How AI processes millions of data points per second.", content: "<h2>The Velocity</h2><p>Speed and volume are the two pillars of modern big data systems...</p>" },
+        { id: 19, title: "JavaScript: The New Language of AI?", date: "April 7, 2026", excerpt: "Why JS is becoming a serious contender for ML.", content: "<h2>Versatility</h2><p>JavaScript's ubiquity makes it the perfect delivery mechanism for AI...</p>" },
+        { id: 20, title: "Why 'Local AI' is the New Standard", date: "April 8, 2026", excerpt: "Speed, privacy, and cost-efficiency of edge computing.", content: "<h2>Conclusion</h2><p>Local AI is the ultimate winner for user experience and trust...</p>" }
     ],
     ko: [
-        {
-            id: 1,
-            title: "안면 인식 기술 뒤에 숨겨진 딥 사이언스",
-            date: "2026년 3월 20일",
-            excerpt: "기계가 인간의 얼굴을 어떻게 그토록 정확하게 인식할 수 있는지, 그 역사와 복잡한 알고리즘을 탐구해 봅니다.",
-            content: `
-                <h2>안면 인식 기술 입문</h2>
-                <p>안면 인식 기술은 공상 과학 소설의 개념에서 이제는 매일의 현실로 바뀌었습니다. 스마트폰 잠금 해제부터 국제 국경의 보안 강화에 이르기까지 이 기술은 어디에나 있습니다. 하지만 실제로 어떻게 작동할까요? 이 글에서는 안면 인식의 역사, 기저에 깔린 신경망, 그리고 미래에 대해 알아봅니다.</p>
-                
-                <h3>간략한 역사</h3>
-                <p>안면 인식의 여정은 1960년대 우드로 블렛소(Woodrow Bledsoe)가 태블릿과 스타일러스를 사용하여 얼굴을 분류하는 시스템을 개발하면서 시작되었습니다. 비록 원시적이었지만, 이는 현대 컴퓨터 비전의 토대를 마련했습니다. 1980년대와 90년대에는 'Eigenface' 접근 방식이 주성분 분석(PCA)을 사용하여 얼굴을 표준화된 특징의 조합으로 표현했습니다.</p>
-                
-                <h3>컨볼루션 신경망(CNN)의 작동 원리</h3>
-                <p>우리 사이트의 '동물상 테스트'에 사용되는 것과 같은 현대의 안면 인식 기술은 컨볼루션 신경망(CNN)에 의존합니다. 눈 사이의 거리와 같은 특정 지표를 찾는 기존 알고리즘과 달리, CNN은 수백만 개의 이미지에서 패턴을 인식하는 법을 배웁니다. 가장자리, 질감, 모양 등의 '특징'을 식별하고 이를 결합하여 복잡한 구조를 이해합니다.</p>
-                
-                <h3>AI의 윤리와 개인정보 보호</h3>
-                <p>AI가 강력해짐에 따라 개인정보 보호는 가장 중요한 관심사가 되었습니다. 이것이 바로 우리 플랫폼이 클라이언트 측 처리를 사용하는 이유입니다. TensorFlow.js를 사용하여 브라우저에서 모든 계산을 수행함으로써 귀하의 개인 이미지 데이터가 당사 서버에 절대 도달하지 않도록 보장합니다. 이러한 'Privacy-by-Design' 접근 방식은 윤리적인 AI 개발의 미래입니다.</p>
-                
-                <h3>결론</h3>
-                <p>안면 인식은 단순한 편의 그 이상입니다. 이는 인공지능이 얼마나 멀리 왔는지를 보여주는 증거입니다. 앞으로 나아가면서 혁신과 개인정보 보호 사이의 균형이 차세대 AI 도구를 정의하게 될 것입니다.</p>
-            `
-        },
-        {
-            id: 2,
-            title: "확률의 이해: 로또의 수학",
-            date: "2026년 3월 21일",
-            excerpt: "그저 운일까요, 아니면 패턴이 있을까요? 통계의 세계로 뛰어들어 난수 생성기가 어떻게 작동하는지 알아보세요.",
-            content: `
-                <h2>로또의 매력</h2>
-                <p>로또는 수세기 동안 인류를 매료시켜 왔습니다. 그것은 궁극적인 '만약에' 시나리오를 상징합니다. 하지만 화려함 뒤에는 차갑고 냉정한 수학의 세계가 있습니다. 로또를 이해하려면 확률의 법칙을 이해해야 합니다.</p>
-                
-                <h3>대수의 법칙</h3>
-                <p>흔한 오해 중 하나는 특정 번호가 나올 '때가 되었다'는 생각입니다. 실제로는 모든 추첨이 독립적인 사건입니다. '대수의 법칙'은 수천 번의 추첨을 거치면 번호의 분포가 고르게 된다고 말하지만, 단기적으로는 어떤 일도 일어날 수 있습니다.</p>
-                
-                <h3>난수 생성기 (RNG)</h3>
-                <p>우리의 로또 생성기는 의사 난수 생성기(PRNG)를 사용합니다. 컴퓨팅에서 '진정한' 무작위성을 달성하는 것은 어렵지만, 현대의 PRNG는 복잡한 수학 공식(예: Mersenne Twister)을 사용하여 통계적으로 무작위와 구별할 수 없는 시퀀스를 생성합니다. 이러한 알고리즘은 공정성과 예측 불가능성을 보장합니다.</p>
-                
-                <h3>운의 심리학</h3>
-                <p>확률이 수백만 분의 일인데도 우리는 왜 게임을 할까요? 심리학자들은 '근접 오류 효과(near-miss effect)'와 '통제의 환상'을 지적합니다. 우리 생성기와 같은 도구는 사용자가 이러한 개념을 재미있고 위험 없는 환경에서 접할 수 있도록 돕습니다.</p>
-                
-                <h3>결론</h3>
-                <p>우리가 미래를 예측할 수는 없지만, 그 뒤에 숨겨진 수학을 이해하면 게임이 더 흥미로워집니다. 기억하세요, 로또는 오락의 한 형태이며 가장 좋은 전략은 항상 책임감 있는 플레이입니다.</p>
-            `
-        },
-        {
-            id: 3,
-            title: "브라우저 속의 AI: TensorFlow.js의 힘",
-            date: "2026년 3월 22일",
-            excerpt: "최신 웹 기술을 통해 사용자 브라우저에서 직접 강력한 머신러닝 모델을 실행하는 방법을 배워보세요.",
-            content: `
-                <h2>클라이언트 측 AI로의 전환</h2>
-                <p>전통적으로 머신러닝은 강력한 서버와 거대한 데이터 센터를 필요로 했습니다. 그러나 TensorFlow.js의 등장은 이러한 힘을 웹 브라우저로 가져왔습니다. 이러한 변화는 속도, 비용, 그리고 개인정보 보호 측면에서 엄청난 시사점을 가집니다.</p>
-                
-                <h3>TensorFlow.js란 무엇인가요?</h3>
-                <p>TensorFlow.js는 개발자가 JavaScript에서 머신러닝 모델을 정의, 훈련 및 실행할 수 있도록 구글에서 개발한 라이브러리입니다. 사용자의 GPU(WebGL을 통해)를 활용하여 신경망에 필요한 대량의 행렬 계산을 수행할 수 있습니다.</p>
-                
-                <h3>로컬 처리 vs 클라우드 AI</h3>
-                <p>우리의 동물상 테스트를 사용할 때, 당신의 컴퓨터가 그 작업을 수행합니다. 즉, 파일을 업로드하는 데 따른 지연 시간이 전혀 없으며, 더 중요한 것은 당신의 데이터가 당신의 것으로 남는다는 것입니다. 이러한 'Edge AI' 접근 방식은 서버 부하를 줄이고 사용자에게 더 많은 제어권을 제공합니다.</p>
-                
-                <h3>웹 앱의 미래</h3>
-                <p>우리는 웹 앱이 더 이상 단순한 정적 페이지가 아니라 지능적인 비서가 되는 시대에 진입하고 있습니다. 실시간 번역부터 접근성 도구에 이르기까지, 브라우저 기반 AI는 이제 시작에 불과합니다.</p>
-            `
-        }
+        { id: 1, title: "안면 인식 기술 뒤에 숨겨진 딥 사이언스", date: "2026년 3월 20일", excerpt: "안면 인식의 매혹적인 역사와 복잡한 알고리즘을 탐구합니다.", content: "<h2>개요</h2><p>안면 인식은 이제 일상이 되었습니다...</p><h3>신경망</h3><p>현대 시스템은 CNN을 사용하여 패턴을 식별합니다...</p>" },
+        { id: 2, title: "확률의 이해: 로또의 수학", date: "2026년 3월 21일", excerpt: "운일까요 패턴일까요? 난수 생성기의 작동 원리를 배워보세요.", content: "<h2>운의 매력</h2><p>로또는 궁극적인 '만약에'를 상징합니다...</p><h3>RNG 기술</h3><p>공정성을 위해 의사 난수 생성기를 사용합니다...</p>" },
+        { id: 3, title: "브라우저 속의 AI: TensorFlow.js의 힘", date: "2026년 3월 22일", excerpt: "브라우저에서 직접 강력한 머신러닝 모델을 실행하세요.", content: "<h2>엣지 AI</h2><p>TensorFlow.js는 서버 대기 시간 없이 실시간 분석을 가능하게 합니다...</p>" },
+        { id: 4, title: "신경망의 진화 과정", date: "2026년 3월 23일", excerpt: "단순한 퍼셉트론에서 딥러닝의 강자로.", content: "<h2>짧은 역사</h2><p>신경망은 수십 년 동안 존재해 왔지만 GPU의 성능이 모든 것을 바꿨습니다...</p>" },
+        { id: 5, title: "AI가 현대 직업 시장에 미치는 영향", date: "2026년 3월 24일", excerpt: "AI가 어떻게 새로운 기회를 창출하고 작업을 자동화하는지.", content: "<h2>거대한 변화</h2><p>AI는 단순히 일자리를 대체하는 것이 아니라 우리가 일하는 방식을 재정의하고 있습니다...</p>" },
+        { id: 6, title: "운의 통계학: 심층 탐구", date: "2026년 3월 25일", excerpt: "무작위 게임의 분산과 표준 편차 이해하기.", content: "<h2>분산</h2><p>운은 종종 긴 이벤트 시퀀스에서 통계적인 특이치일 뿐입니다...</p>" },
+        { id: 7, title: "윤리적 AI: 개인정보 보호가 중요한 이유", date: "2026년 3월 26일", excerpt: "빅데이터 시대에 로컬 처리의 중요성.", content: "<h2>개인정보 우선</h2><p>생체 인식 데이터를 처리하려면 최고 수준의 암호화와 로컬 처리가 필요합니다...</p>" },
+        { id: 8, title: "2026년 브라우저 기반 ML 트렌드", date: "2026년 3월 27일", excerpt: "웹 기반 인공지능의 다음 단계는?", content: "<h2>WebGPU와 그 너머</h2><p>웹 AI의 다음 개척지는 브라우저에서의 대규모 GPU 가속입니다...</p>" },
+        { id: 9, title: "동물상 닮음의 심리학", date: "2026년 3월 28일", excerpt: "인간은 왜 동물의 얼굴에서 닮은 점을 인지할까요?", content: "<h2>파레이돌리아</h2><p>우리의 뇌는 자연에서 친숙한 패턴을 찾도록 설계되어 있습니다...</p>" },
+        { id: 10, title: "예측 불가능한 것을 예측하기: 게임의 수학", date: "2026년 3월 29일", excerpt: "디지털 환경에서의 게임 이론과 확률.", content: "<h2>게임 이론</h2><p>모든 게임은 공정성을 정의하는 수학적 토대를 가지고 있습니다...</p>" },
+        { id: 11, title: "TensorFlow.js가 웹을 바꾸는 방식", date: "2026년 3월 30일", excerpt: "모든 웹 개발자를 위한 AI의 민주화.", content: "<h2>접근성</h2><p>더 이상 웹에 AI를 구현하기 위해 박사 학위가 필요하지 않습니다...</p>" },
+        { id: 12, title: "컴퓨터 비전의 미래", date: "2026년 3월 31일", excerpt: "증강 현실과 실시간 객체 추적.", content: "<h2>얼굴 그 너머</h2><p>컴퓨터 비전은 전체 맥락과 의도를 이해하는 방향으로 나아가고 있습니다...</p>" },
+        { id: 13, title: "생성형 AI vs 분석형 AI", date: "2026년 4월 1일", excerpt: "창조와 탐지 사이의 차이점 이해하기.", content: "<h2>합성 vs 분석</h2><p>생성형 AI는 새로운 데이터를 만들고, 분석형 AI는 기존 데이터를 해석합니다...</p>" },
+        { id: 14, title: "나만의 AI 도구 만드는 법", date: "2026년 4월 2일", excerpt: "AI 웹 개발자를 꿈꾸는 이들을 위한 가이드.", content: "<h2>시작하기</h2><p>Teachable Machine과 같은 간단한 라이브러리로 시작하여 맞춤형 모델로 나아가세요...</p>" },
+        { id: 15, title: "프로그래밍에서 무작위성의 과학", date: "2026년 4월 3일", excerpt: "컴퓨터에게 진정한 무작위성이 어려운 이유.", content: "<h2>엔트로피</h2><p>컴퓨터는 명령을 따르기 때문에 '진정한' 무작위성을 달성하기 어렵습니다...</p>" },
+        { id: 16, title: "AI와 개인정보 보호", date: "2026년 4월 4일", excerpt: "데이터 안전에 대한 개발자의 관점.", content: "<h2>법으로서의 코드</h2><p>개발자는 애플리케이션의 아키텍처에 개인정보 보호를 내장해야 합니다...</p>" },
+        { id: 17, title: "2026년 최고의 재미있는 AI 도구 10선", date: "2026년 4월 5일", excerpt: "페이스 스왑부터 음악 생성기까지.", content: "<h2>리스트</h2><p>AI는 웹을 훨씬 더 상호작용적이고 재미있는 곳으로 만들고 있습니다...</p>" },
+        { id: 18, title: "빅데이터 분석의 이해", date: "2026년 4월 6일", excerpt: "AI가 초당 수백만 개의 데이터 포인트를 처리하는 방법.", content: "<h2>속도</h2><p>속도와 볼륨은 현대 빅데이터 시스템의 두 기둥입니다...</p>" },
+        { id: 19, title: "JavaScript: AI의 새로운 언어?", date: "2026년 4월 7일", excerpt: "JS가 왜 ML의 심각한 경쟁자가 되고 있는지.", content: "<h2>다재다능함</h2><p>JavaScript의 편재성은 AI를 위한 완벽한 전달 메커니즘을 제공합니다...</p>" },
+        { id: 20, title: "왜 '로컬 AI'가 새로운 표준인가", date: "2026년 4월 8일", excerpt: "엣지 컴퓨팅의 속도, 보안, 효율성.", content: "<h2>결론</h2><p>로컬 AI는 사용자 경험과 신뢰를 위한 궁극적인 승자입니다...</p>" }
     ]
 };

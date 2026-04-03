@@ -127,6 +127,8 @@ const translations = {
 // --- State Management ---
 let currentLang = localStorage.getItem('lang') || 'en';
 let currentTheme = localStorage.getItem('theme') || 'light';
+let currentPage = 1;
+const postsPerPage = 10;
 
 // --- Select Elements ---
 const numbersContainer = document.querySelector('.numbers-container');
@@ -134,6 +136,7 @@ const generateBtn = document.getElementById('generate-btn');
 const themeToggle = document.getElementById('theme-toggle');
 const langToggle = document.getElementById('lang-toggle');
 const blogListing = document.getElementById('blog-listing');
+const paginationContainer = document.getElementById('pagination');
 const articleViewer = document.getElementById('article-viewer');
 const articleContent = document.getElementById('article-content');
 const backToBlogBtn = document.getElementById('back-to-blog');
@@ -177,7 +180,8 @@ function updateLanguage(lang) {
     // Update theme toggle text
     updateTheme(currentTheme);
     
-    // Render blog listing with new language
+    // Render blog listing with new language and reset to first page
+    currentPage = 1;
     renderBlogListing();
 
     // Re-run prediction if image exists to update comments language
@@ -195,7 +199,12 @@ function renderBlogListing() {
     if (!blogListing) return;
     blogListing.innerHTML = '';
     if (!articles || !articles[currentLang]) return;
-    articles[currentLang].forEach(article => {
+
+    const startIndex = (currentPage - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    const currentArticles = articles[currentLang].slice(startIndex, endIndex);
+
+    currentArticles.forEach(article => {
         const card = document.createElement('div');
         card.classList.add('blog-card');
         card.id = `article-${article.id}`;
@@ -212,6 +221,31 @@ function renderBlogListing() {
         `;
         blogListing.appendChild(card);
     });
+
+    renderPagination();
+}
+
+function renderPagination() {
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = '';
+    
+    const totalPages = Math.ceil(articles[currentLang].length / postsPerPage);
+    if (totalPages <= 1) return;
+
+    for (let i = 1; i <= totalPages; i++) {
+        const pageBtn = document.createElement('button');
+        pageBtn.textContent = i;
+        pageBtn.classList.add('page-btn');
+        if (i === currentPage) pageBtn.classList.add('active');
+        
+        pageBtn.addEventListener('click', () => {
+            currentPage = i;
+            renderBlogListing();
+            window.scrollTo({ top: blogListing.offsetTop - 100, behavior: 'smooth' });
+        });
+        
+        paginationContainer.appendChild(pageBtn);
+    }
 }
 
 function toggleArticle(id) {
